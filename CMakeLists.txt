@@ -332,7 +332,7 @@ else()
 endif()
 
 # Support for MRS100/SCANSEGMENT_XD/MULTISCAN136
-if(BUILD_WITH_SCANSEGMENT_XD_SUPPORT EQUAL ON)
+if(${BUILD_WITH_SCANSEGMENT_XD_SUPPORT})
     message(STATUS "Building ${PROJECT_NAME} with SCANSEGMENT_XD support")
     add_compile_options(-DSCANSEGMENT_XD_SUPPORT=1)
     # msgpack11
