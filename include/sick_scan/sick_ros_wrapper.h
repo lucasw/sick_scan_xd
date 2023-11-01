@@ -175,10 +175,10 @@ template <typename T> rosPublisher<T> rosAdvertise(rosNodePtr nh, const std::str
     if (qos_val >= 0)
         qos = qos_val;
     std::string topic2;
-    if(topic.empty() || topic[0] != '/')
-      topic2 = std::string("/") + topic;
-    else
-      topic2 = topic;
+    // if(topic.empty()) || topic[0] != '/')
+    //  topic2 = std::string("/") + topic;
+    // else
+    topic2 = topic;
     ROS_INFO_STREAM("Publishing on topic \"" << topic2 << "\", qos=" << qos);
     ros::Publisher publisher = nh->advertise<T>(topic2, queue_size);
     return rosPublisher<T>(publisher);
