@@ -10,6 +10,7 @@
 #include <string>
 #include <iostream>
 #include <fstream>      // std::ifstream
+#include <cstdint>
 #include <cstring>
 #include <sstream>      // std::stringstream
 #include <vector>
