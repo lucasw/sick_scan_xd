@@ -2437,15 +2437,10 @@ namespace sick_scan
       exit(0);//stopping node hard to avoide further IP-Communication
     }
 
-
-
-
-
-
     if (setUseNTP)
     {
-
-      setNTPServerAndStart(NTPIpAdress, useBinaryCmd);
+      const bool rv = setNTPServerAndStart(NTPIpAdress, useBinaryCmd);
+      ROS_WARN_STREAM("set ntp address " << NTPIpAdress << " " << rv);
     }
 
     /*
