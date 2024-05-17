@@ -1798,6 +1798,7 @@ namespace sick_scan
     bool setUseNTP = false;
     rosDeclareParam(nh, "ntp_server_address", sNTPIpAdress);
     setUseNTP = rosGetParam(nh, "ntp_server_address", sNTPIpAdress);
+    ROS_WARN_STREAM("ntp " << sNTPIpAdress);
     if (sNTPIpAdress.empty())
       setUseNTP = false;
     if (setUseNTP)
@@ -2441,6 +2442,10 @@ namespace sick_scan
     {
       const bool rv = setNTPServerAndStart(NTPIpAdress, useBinaryCmd);
       ROS_WARN_STREAM("set ntp address " << NTPIpAdress << " " << rv);
+    }
+    else
+    {
+      ROS_WARN_STREAM("not using ntp server '" << NTPIpAdress << "'");
     }
 
     /*
