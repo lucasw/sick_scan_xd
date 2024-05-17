@@ -211,10 +211,10 @@ bool sick_scansegment_xd::MsgPackExporter::RunCb(void)
                     double msg_exported_rate = (double)msg_exported_counter / sick_scansegment_xd::Fifo<MsgPackParserOutput>::Seconds(recv_start_timestamp, fifo_clock::now());
                     if (m_verbose && ((msg_exported_counter%100) == 0 || sick_scansegment_xd::Fifo<MsgPackParserOutput>::Seconds(last_print_timestamp, fifo_clock::now()) > 0.1)) // avoid printing with more than 100 Hz
                     {
-                        ROS_INFO_STREAM("MsgPackExporter:   " << current_udp_fifo_size << " udp packages still in input fifo, " << current_output_fifo_size << " messages still in msgpack output fifo, current message count: " << msgpack_output.segmentIndex);
-                        ROS_INFO_STREAM("MsgPackExporter: " << msg_udp_received_counter << " udp messages received, " << msg_exported_counter << " messages exported, " << (100.0 * packages_lost_rate) << "% package lost.");
-                        ROS_INFO_STREAM("MsgPackExporter: max. " << max_count_udp_messages_in_fifo << " udp messages buffered, max " << max_count_output_messages_in_fifo << " export messages buffered.");
-                        ROS_INFO_STREAM("MsgPackExporter: " << msg_exported_counter << " msgpacks exported at " << msg_exported_rate << " Hz, mean time: " << duration_datahandling_milliseconds.MeanMilliseconds() << " milliseconds/msgpack, " 
+                        ROS_INFO_STREAM_THROTTLE(4.0, "MsgPackExporter:   " << current_udp_fifo_size << " udp packages still in input fifo, " << current_output_fifo_size << " messages still in msgpack output fifo, current message count: " << msgpack_output.segmentIndex);
+                        ROS_INFO_STREAM_THROTTLE(4.0, "MsgPackExporter: " << msg_udp_received_counter << " udp messages received, " << msg_exported_counter << " messages exported, " << (100.0 * packages_lost_rate) << "% package lost.");
+                        ROS_INFO_STREAM_THROTTLE(4.0, "MsgPackExporter: max. " << max_count_udp_messages_in_fifo << " udp messages buffered, max " << max_count_output_messages_in_fifo << " export messages buffered.");
+                        ROS_INFO_STREAM_THROTTLE(4.0, "MsgPackExporter: " << msg_exported_counter << " msgpacks exported at " << msg_exported_rate << " Hz, mean time: " << duration_datahandling_milliseconds.MeanMilliseconds() << " milliseconds/msgpack, "
                             << "stddev time: " << duration_datahandling_milliseconds.StddevMilliseconds() << ", " << "max time: " << duration_datahandling_milliseconds.MaxMilliseconds() << " milliseconds between udp receive and msgpack export, "
                             << "histogram=[" << duration_datahandling_milliseconds.PrintHistMilliseconds() << "]");
                         last_print_timestamp = fifo_clock::now();
