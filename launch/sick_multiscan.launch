@@ -41,7 +41,7 @@
         <param name="publish_laserscan_fullframe_topic" type="string" value="$(arg publish_laserscan_fullframe_topic)" />       <!-- topic of ros Laserscan fullframe messages -->
         <param name="udp_input_fifolength" type="int" value="20" />                         <!-- max. udp input fifo length(-1: unlimited, default: 20 for buffering 1 second at 20 Hz), elements will be removed from front if number of elements exceeds the fifo_length -->
         <param name="msgpack_output_fifolength" type="int" value="20" />                    <!-- max. msgpack output fifo length(-1: unlimited, default: 20 for buffering 1 second at 20 Hz), elements will be removed from front if number of elements exceeds the fifo_length -->
-        <param name="verbose_level" type="int" value="1" />                                 <!-- verbose_level <= 0: quiet mode, verbose_level == 1: print statistics, verbose_level == 2: print details incl. msgpack data, default: 1 -->
+        <param name="verbose_level" type="int" value="0" />                                 <!-- verbose_level <= 0: quiet mode, verbose_level == 1: print statistics, verbose_level == 2: print details incl. msgpack data, default: 1 -->
         <param name="measure_timing" type="bool" value="True" />                            <!-- measure_timing == true: duration and latency of msgpack conversion and export is measured, default: true -->
         <param name="export_csv" type="bool" value="False" />                               <!-- export msgpack data to csv file, default: false -->
         <param name="export_udp_msg" type="bool" value="False" />                           <!-- true : export binary udpand msgpack data to file(*.udp and* .msg), default: false -->
